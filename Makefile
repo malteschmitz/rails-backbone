@@ -1,18 +1,18 @@
 rerun = "(There were undefined references|Rerun to get (cross-references|the bars) right)"
 latex = pdflatex
 doc = rails-backbone
-TEXINPUTS := inc:$(TEXINPUTS)
+TEXINPUTS := inc:content:$(TEXINPUTS)
 
 all: $(doc).pdf
 
 dist: FORCE $(doc).pdf $(doc)-script.pdf
 
-$(doc).pdf: $(doc).tex content.tex inc/style.tex inc/beamerthemeMalte.sty inc/beamercolorthemeMalte.sty
+$(doc).pdf: $(doc).tex content/main.tex content/webapplications.tex content/webservice.tex content/client.tex inc/style.tex inc/beamerthemeMalte.sty inc/beamercolorthemeMalte.sty
 	TEXINPUTS="$(TEXINPUTS)" $(latex) $(doc).tex
 	(egrep -q $(rerun) $(doc).log && TEXINPUTS="$(TEXINPUTS)" $(latex) $(doc).tex) || true
 	(egrep -q $(rerun) $(doc).log && TEXINPUTS="$(TEXINPUTS)" $(latex) $(doc).tex) || true
 	
-$(doc)-script.pdf: $(doc)-script.tex content.tex inc/style.tex inc/beamerthemeMalte.sty inc/beamercolorthemeMalte.sty
+$(doc)-script.pdf: $(doc)-script.tex content/main.tex content/webapplications.tex content/webservice.tex content/client.tex inc/style.tex inc/beamerthemeMalte.sty inc/beamercolorthemeMalte.sty
 	TEXINPUTS="$(TEXINPUTS)" $(latex) $(doc)-script.tex
 	(egrep -q $(rerun) $(doc)-script.log && TEXINPUTS="$(TEXINPUTS)" $(latex) $(doc)-script.tex) || true
 	(egrep -q $(rerun) $(doc)-script.log && TEXINPUTS="$(TEXINPUTS)" $(latex) $(doc)-script.tex) || true
