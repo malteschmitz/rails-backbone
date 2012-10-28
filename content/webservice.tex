@@ -57,10 +57,37 @@
   \end{center}
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{REST mit Rails}
+\begin{frame}{RESTful Rails}
+  \begin{itemize}
+    \item URIs repräsentieren Ressourcen
+    \item Repräsentationen von Ressourcen
+    \item Zwei URIs
+    \begin{itemize}
+      \item Collection-URI \\ \lstinline|GET /users|
+      \item Item-URI \\ \lstinline|GET /users/42|
+    \end{itemize}
+  \end{itemize}
+\end{frame}
 
-\frame{no content}
+\begin{frame}{RESTful Rails}
+  \begin{center}
+    \begin{zebratabular}{lll}\headerrow
+      Aktion  & Methode & Bedeutung \\
+      index   & GET     & Abrufen aller Entitäten \\
+      create  & POST    & Anlegen einer Entität \\
+      show    & GET     & Abrufen einer Entität \\
+      update  & PUT     & Aktualisieren einer Entität \\
+      destroy & DELETE  & Löschen einer Entität \\
+
+      \only<1>{new}\only<2>{\color{red}\xcancel{\color{black}new}} &
+      \only<1>{GET}\only<2>{\color{red}\xcancel{\color{black}GET}} &
+      Formular zum Erzeugen \\
+      \only<1>{edit}\only<2>{\color{red}\xcancel{\color{black}edit}} &
+      \only<1>{GET}\only<2>{\color{red}\xcancel{\color{black}GET}} &
+      Formular zum Editieren \\
+    \end{zebratabular}
+  \end{center}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Responder aus Rails 3}
