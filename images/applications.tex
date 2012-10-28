@@ -1,0 +1,49 @@
+\begin{tikzpicture}[
+    box/.style={
+      anchor=center,
+      rotate=90,
+      minimum width=#1,
+      minimum height=5ex,
+      inner sep=0pt,
+      font=\small,
+      draw=maincolor,
+      thick,
+      fill=maincolor!30,
+      rounded corners
+    },
+    app/.style={
+      anchor=center,
+      rotate=90,
+      inner sep=0pt,
+      font=\large
+    }
+  ]
+  
+  \fill[maincolor!18]
+    (0,5ex) rectangle (25em,15ex)
+    (0,25ex) rectangle (25em,35ex);
+  \fill[maincolor!9]
+    (0,-5ex) rectangle (25em,5ex)
+    (0,15ex) rectangle (25em,25ex);
+  
+  \begin{scope}[anchor=west,xshift=1em,font=\large]
+    \node at (0,30ex) (Darstellung) {Darstellung};
+    \node at (0,20ex) (Präsentation) {Präsentation};
+    \node at (0,10ex) (Geschäftslogik) {Geschäftslogik};
+    \node at (0,0) (Datenhalung) {Datenhaltung};
+  \end{scope}
+  
+  \begin{scope}[xshift=10.5em]  
+    \node at (0em,15ex) [app] {Desktop Application};
+    \node at (2em,20ex) [box=28ex] {Client};
+    \node at (2em,0ex) [box=8ex] {Server};
+    
+    \node at (5em,15ex) [app] {Web Application};
+    \node at (7em,30ex) [box=8ex] {Client};
+    \node at (7em,10ex) [box=28ex] {Server};
+    
+    \node at (10em,15ex) [app] {Single-Page-Application};
+    \node at (12em,25ex) [box=18ex] {Client};
+    \node at (12em,5ex) [box=18ex] {Server};
+  \end{scope}  
+\end{tikzpicture}
