@@ -1,12 +1,55 @@
-\colorlet{maincolor}{bordeaux} % Color section in bordeaux
-\section[Webservices]{Webservice mit Rails 3.2}
+%\begin{frame}{}
+%  \begin{itemize}
+%    \item item
+%  \end{itemize}
+%\end{frame}
 
-\frame{no content}
+\colorlet{maincolor}{bordeaux} % Color section in bordeaux
+
+\section[Webservice]{Webservice mit Rails 3.2}
+
+\begin{frame}{Was ist Rails}
+  \begin{itemize}
+    \item Ruby on Rails Web-Framework
+    \item Annahmen über \enquote{The Rails Way}
+    \item Folgt Prinzipien
+    \begin{itemize}
+      \item DRY -- \enquote{Don’t Repeat Yourself}
+      \item Convention Over Configuration
+      \item REST-Architekturstil
+    \end{itemize}
+  \end{itemize}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Model-View-Controller}
 
-\frame{no content}
+\begin{frame}{Models}
+  \begin{itemize}
+    \item Repräsentieren Daten
+    \item Interagieren mit der Datenbank
+    \item Enthalten Applikationslogik
+    \item Häufig: Model $\hat =$ Datenbank-Tabelle
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Views}
+  \begin{itemize}
+    \item Bieten Benutzungsschnittstelle der Applikation
+    \item Präsentieren ausschließlich Daten
+    \item Liefern Daten aus
+    \item Häufig: HTML-Dokumente mit eingebettetem Ruby-Code
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Controllers}
+  \begin{itemize}
+    \item Integrieren Views und Models
+    \item Verarbeiten Anfragen
+    \item Rufen Daten beim Model ab
+    \item Liefern Daten zum View
+  \end{itemize}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{REST mit Rails}
