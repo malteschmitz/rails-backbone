@@ -20,7 +20,47 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{RESTful Webservice}
 
-\frame{no content}
+\begin{frame}{Was sind Webservices}
+  \begin{itemize}
+    \item Stellen Funktionalitäten über ein Netzwerk bereit
+    \item Eindeutig definierte Schnittstelle
+    \item Kommunikation über definierte Protokolle
+    \item Zwei bekannte Vertreter: SOAP und RESTful
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{REST-Architekturstil}
+  Representational State Transfer (REST)
+  \vskip2ex
+  \begin{tabularx}{\textwidth}{rX}
+    \textbf{\color{maincolor}Identität} & Ressource eindeutig identifiziert \\
+    \textbf{\color{maincolor}Manipulation} & Selbst beschreibende Ressourcen \\
+    \textbf{\color{maincolor}Nachrichten} & Alle Informationen 
+      zur Verarbeitung \newline
+      enthalten\\
+    \textbf{\color{maincolor}Hypermedia} & 
+      \textcolor{maincolor}{--} Wenige Einstiegspunkte \newline
+      \textcolor{maincolor}{--} Interaktion durch Hypermedia \\
+    \textbf{\color{maincolor}Zustandslos} & Status einer Interaktion mit dem
+      Client unbekannt \\
+  \end{tabularx}
+\end{frame}
+
+\begin{frame}{Was sind RESTful Webservices}
+  \begin{itemize}
+    \item Representational State Transfer (REST)
+    \item Bekannter Vertreter WWW
+    \item HTTP als Kommunikationsprotokoll
+    \item Ressourcen als Elementen der Domäne
+    \item Nutzt Verben des HTTP-Protokolls
+    \begin{description}
+      \item[GET] zum Informationsabruf
+      \item[POST] zum Anlegen neuer Daten
+      \item[PUT] zum Aktualisieren 
+      \item[DELETE] zum Löschen von Daten
+    \end{description}
+  \end{itemize}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Single-Page-Application-Client}
