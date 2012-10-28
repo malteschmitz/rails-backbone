@@ -1,4 +1,4 @@
-\only<1>{
+\only<presentation| presentation:1>{
   \tikzset{
     every label/.style={
       font=\scriptsize\color{white}\bfseries,,
@@ -52,7 +52,7 @@
   
   \draw[line]
     (Browser) edge[->,out=180,in=0] (Router);
-  \only<1>{
+  \only<presentation| presentation:1>{
     \draw[line]
       (Router) edge[->] (StateModel);
   }
@@ -62,7 +62,7 @@
   }
     
   
-  \only<1>{
+  \only<presentation| presentation:1>{
     \draw[line, xs=-1em]
       ($(StateModel.south) + (1em,0)$) edge[->,out=270,in=90] (Views)
       (Views) edge[->] (Collections)
@@ -75,7 +75,7 @@
       (Collections) edge[->] (Models label);
   }
    
-  \only<1>{
+  \only<presentation| presentation:1>{
     \draw[line, xs=1em]
       (Models) edge[->] (Collections)
       (Collections) edge[->] (Views)
@@ -88,7 +88,7 @@
       (Views label) edge[->,out=90,in=270] ($(DOM.south) + (-1em,0)$);
   }
    
-  \only<1>{
+  \only<presentation| presentation:1>{
     \draw[line]
       (DOM) edge[->] (Browser);
   }  
