@@ -1,7 +1,7 @@
 rerun = "(There were undefined references|Rerun to get (cross-references|the bars) right)"
 latex = pdflatex
 doc = rails-backbone
-TEXINPUTS := inc:content:$(TEXINPUTS)
+TEXINPUTS := ./inc:./content:$(TEXINPUTS)
 
 all: $(doc).pdf
 
