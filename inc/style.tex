@@ -65,7 +65,7 @@
   pdftitle={\titlestring},
   pdfauthor={\authorstring}}
   \title[\shorttitlestring]{\titlestring}
-  \author{\authorstring}
+  \author[\shortauthorstring]{\authorstring}
   \date{\datestring}}
 
 % set texts used later
@@ -216,6 +216,7 @@
     \begin{center}
       \color{maincolor}\sffamily
       \huge\titlestring
+      \par\titleimage
       \par\large
       \authorstring\ -- \datestring
     \end{center}
@@ -238,6 +239,8 @@
       \null\vfill
       \color{maincolor}\sffamily
       \huge\titlestring
+      \par\vskip2ex
+      \par\titleimage
       \par\vskip2ex
       \large\authorstring\\\datestring
       \vskip12ex
