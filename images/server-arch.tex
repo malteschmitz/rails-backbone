@@ -4,45 +4,52 @@
       thick,
       rectangle,
       rounded corners,
-      minimum width=5em,
-      minimum height=3ex,
+      minimum width=6em,
+      minimum height=4ex,
       inner sep=0ex,
       fill=maincolor!18},
-    shorten >=1pt
+    shorten >=1pt,
+    xs/.style={every edge/.append style={
+      transform canvas={xshift=#1}
+    }},
+    ys/.style={every edge/.append style={
+      transform canvas={yshift=#1}
+    }},
+    line/.style={
+      thick,
+      color=maincolor
+    },
+    node distance=2em and 5ex
   ]
 
-  \node (client) {Client};
-  \node[node,below of= client] (webrick) {WEBrick};
-  \node[node,left of= webrick,node distance=7em] (files) {Files};
-  \node[node,below of= webrick] (routing) {Routing};
-  \node[node,right of= routing,node distance=7em] (views) {Views};
-  \node[node,below of= routing] (controllers) {Controllers};
-  \node[node,below of= controllers] (models) {Models};
-  \node[node,below of= models] (database) {Database};
+  \node (Client) {\shortstack{\pgfimage[width=4em]{images/client}\\ Client}};
+  \node[node, below=of Client] (WEBrick) {WEBrick};
+  \node[node distance=10ex,left=of WEBrick] (Files) {\shortstack{\pgfimage[width=2.5em]{images/db}\\ Files}};
+  \node[node, node distance=2em and -5ex, below left=of WEBrick] (Routing) {Routing};
+  \node[node, node distance=2em and -5ex, below right=of WEBrick] (Views) {Views};
+  \node[node, node distance=2em and -5ex, below right=of Routing] (Controllers) {Controllers};
+  \node[node, below=of Controllers] (Models) {Models};
+  \node[node distance=10ex, left=of Models] (Database) {\shortstack{\pgfimage[width=2.5em]{images/db}\\ Database}};
 
-  \draw[->,thick,color=maincolor,
-        every edge/.append style={transform canvas={xshift=-1em}}]
-    (client) edge (webrick)
-    (webrick) edge (routing)
-    (routing) edge (controllers)
-    (controllers) edge (models)
-    (models) edge (database);
+  \draw[line, xs=-1em]
+    (Client) edge[->] (WEBrick)
+    (WEBrick) edge[->,out=270,in=90] ($(Routing.north) + (1em,0)$)
+    ($(Routing.south) + (1em,0)$) edge[->,out=270,in=90] (Controllers)
+    (Controllers) edge[->] (Models);
 
-  \draw[->,thick,color=maincolor,
-        every edge/.append style={transform canvas={xshift=1em}}]
-    (database) edge (models)
-    (models) edge (controllers)
-    (webrick) edge (client);
+  \draw[line, xs=1em]
+    (Models) edge[->] (Controllers)
+    (WEBrick) edge[->] (Client);
 
-  \draw[thick,color=maincolor]
-    (controllers.east) edge[->,out=0,in=-90] (views.south)
-    (views.north) edge[->,out=90,in=0] (webrick.east);
+  \draw[line, xs=1em]
+    (Controllers) edge[->,out=90,in=270] ($(Views.south) + (-1em,0)$)
+    ($(Views.north) + (-1em,0)$) edge[->,out=90,in=270] (WEBrick);
 
-  \draw[->,thick,color=maincolor,
-        every edge/.append style={transform canvas={yshift=.6ex}}]
-    (webrick) edge (files);
+  \draw[line, ys=1ex]
+    (Database) edge[->] (Models)
+    (WEBrick) edge[->] (Files);
 
-  \draw[->,thick,color=maincolor,
-        every edge/.append style={transform canvas={yshift=-.6ex}}]
-    (files) edge (webrick);
+  \draw[line, ys=-1ex]
+    (Models) edge[->] (Database)
+    (Files) edge (WEBrick);
 \end{tikzpicture}
