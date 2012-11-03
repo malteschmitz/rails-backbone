@@ -22,13 +22,13 @@
     node distance=2em and 5ex
   ]
 
-  \node (Client) {\shortstack{\pgfimage[width=4em]{images/client}\\ Client}};
-  \node[node, below=of Client] (WEBrick) {WEBrick};
+  \node (Client) {\shortstack{\pgfimage[width=2.5em]{images/client}\\ Client}};
+  \node[node, node distance=4ex, below=of Client] (WEBrick) {WEBrick};
   \node[node distance=10ex,left=of WEBrick] (Files) {\shortstack{\pgfimage[width=2.5em]{images/db}\\ Files}};
   \node[node, node distance=2em and -5ex, below left=of WEBrick] (Routing) {Routing};
   \node[node, node distance=2em and -5ex, below right=of WEBrick] (Views) {Views};
   \node[node, node distance=2em and -5ex, below right=of Routing] (Controllers) {Controllers};
-  \node[node, below=of Controllers] (Models) {Models};
+  \node[node, node distance=4ex, below=of Controllers] (Models) {Models};
   \node[node distance=10ex, left=of Models] (Database) {\shortstack{\pgfimage[width=2.5em]{images/db}\\ Database}};
 
   \draw[line, xs=-1em]
