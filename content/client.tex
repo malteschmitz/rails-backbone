@@ -10,11 +10,32 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Backbone}
 
-\begin{frame}[fragile]{Events in Backbone}
+\begin{Frame}[fragile]{Events in Backbone}
   \begin{center}
     \input{images/events}
   \end{center}
-\end{frame}
+\end{Frame}
+
+\mode
+<article>
+
+Unterschiede zwischen Events in Backbone und der klassischen Realisierung
+des Ovserver-Patterns in Java:
+\begin{compactitem}
+  \item Es gibt benannte Ereignisse, damit kann ein zu beobachtendes Objekt
+    verschiedenen Mengen von Beobachtern haben, die bei unterschiedlichen
+    Situationen benachrichtigt werden.
+  \item Events werden nicht vorher registriert, dass heißt, das zu beobachtende
+    Objekt ruft einfach \lstinline-trigger- mit dem Namen des Ereignisses auf.
+  \item Ein Beobachter muss nicht sich als Objekt mit \lstinline-addListener-
+    am zu beobachten Objekt registriert, sondern mit \lstinline-bind-
+    eine (seiner) Methoden zusammen mit dem Namen des zu beobachtenden
+    Ereignisses an das zu beobachtenden Objekt binden. Es werden also
+    Funktionen statt Objekt als Ereignisbehandler übergeben.
+\end{compactitem}
+
+\mode
+<all>
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{DOM-Manipulation}
