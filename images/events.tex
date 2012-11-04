@@ -1,0 +1,88 @@
+% pgf-umlsd isn't able do draw such an image, because all actions have to
+% origin in a thread and the main thread is active the whole time. This image
+% is an incomplete one showing only parts of the activities and therefore
+% the always active main thread isn't included in the image.
+
+\tikzset{
+  instance/.style={
+    rectangle,
+    draw=maincolor,
+    thick,
+    anchor=west,
+    minimum height=0.8cm,
+    minimum width=1.6cm,
+    fill=maincolor!18,
+    anchor=center,
+    font=\ttfamily\small
+  },
+  liveline/.style={
+    dotted
+  },
+  activity/.style={
+    rectangle,
+    inner sep=0pt,
+    minimum width=8pt,
+    draw=maincolor,
+    fill=maincolor!50,
+    minimum height=#1,
+    anchor=north
+  },
+  synchron message/.style={
+    draw,
+    ->,
+    >=triangle 60
+  },
+  return message/.style={
+    dashed,
+    ->,
+    >=angle 60
+  },
+  message label/.style={
+    font=\ttfamily\small,
+    above
+  }
+}
+
+\newcommand{\ltrmess}[5][]{
+  \draw (#3.east |- 0,#2) edge[#1 message] node[message label] {#5} (#4.west |- 0,#2);
+}
+\newcommand{\rtlmess}[5][]{
+  \draw (#3.west |- 0,#2) edge[#1 message] node[message label] {#5} (#4.east |- 0,#2);
+}
+
+\begin{tikzpicture}
+  \draw[liveline] (0,0) -- ++(0,-7)
+                  (5,0) -- ++(0,-7)
+                  (8,0) -- ++(0,-7);
+  \node[instance] at (0,0) {\underline{listener}};
+  \node[instance] at (5,0) {\underline{model}};
+  \node[instance] at (8,0) {\underline{setter}};
+  
+  \node[activity=1.5cm] (listener bind) at (0,-1) {};
+  \node[activity=.5cm] (model bind) at (5,-1.5) {};
+  
+  \ltrmess[synchron]{-1.5}{listener bind}{model bind}
+    {\shortstack{bind("{}a:change",\\ listener.handler)}}
+  \rtlmess[return]{-2}{model bind}{listener bind}
+    {}
+    
+  \node[activity=4.2cm] (setter set) at (8,-2.5) {};
+  \node[activity=3.4cm] (model set) at (5,-3) {};
+  
+  \rtlmess[synchron]{-3}{setter set}{model set}
+    {set("{}a",2)}
+    
+  \node[activity=1.8cm,xshift=-4pt] (model trigger) at (5,-4) {};
+  \draw (model set.west |- 0,-3.5) -- node[message label] {trigger("{}a:change")} ++(-4,0)
+    -- ++(0,-.5) edge[synchron message] (model trigger.west |- 0,-4);
+    
+  \node[activity=.5cm] (listener handler) at (0,-5) {};
+  \rtlmess[synchron]{-5}{model trigger}{listener handler}
+    {handler()}
+  \ltrmess[return]{-5.5}{listener handler}{model trigger}{}
+  
+  \draw[dashed] (model trigger.west |- 0,-5.8) --++(-.5,0)
+    -- ++(0,-.3) edge[return message] (model set.west |- 0,-6.1);  
+  
+  \ltrmess[return]{-6.4}{model set}{setter set}{}
+\end{tikzpicture}
