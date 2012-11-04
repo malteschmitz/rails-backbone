@@ -69,7 +69,9 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{RESTful Rails}
+\begin{frame}[fragile]{RESTful Rails}
+  \newcommand{\coord}[1]{\tikz[remember picture]{\node[coordinate](#1){};}}
+
   \begin{center}
     \begin{zebratabular}{lll}\headerrow
       Aktion  & Methode & Bedeutung \\
@@ -78,15 +80,18 @@
       show    & GET     & Abrufen einer Entität \\
       update  & PUT     & Aktualisieren einer Entität \\
       destroy & DELETE  & Löschen einer Entität \\
-
-      \only<1>{new}\only<2>{\color{red}\xcancel{\color{black}new}} &
-      \only<1>{GET}\only<2>{\color{red}\xcancel{\color{black}GET}} &
-      Formular zum Erzeugen \\
-      \only<1>{edit}\only<2>{\color{red}\xcancel{\color{black}edit}} &
-      \only<1>{GET}\only<2>{\color{red}\xcancel{\color{black}GET}} &
-      Formular zum Editieren \\
+      \coord{new left}new & GET & Formular zum Erzeugen\coord{new right}\\
+      \coord{edit left}edit & GET & Formular zum Editieren\coord{edit right}
     \end{zebratabular}
   \end{center}
+  
+  \begin{tikzpicture}[remember picture,overlay]
+    \only<2>{\draw[red,thick]
+      ($(new left) + (-.5ex,.5ex) $) --
+      ($(new right) + (.5ex,.5ex)$)
+      ($(edit left) + (-.5ex,.5ex) $) --
+      ($(edit right) + (.5ex,.5ex)$);}
+  \end{tikzpicture}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
