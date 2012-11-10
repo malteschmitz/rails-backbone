@@ -122,7 +122,7 @@
         end
       end
 
-      ...
+      # ...
     end
   \end{lstlisting}
 \end{frame}
@@ -139,7 +139,7 @@
         respond_with(@planets)
       end
 
-      ...
+      # ...
     end
   \end{lstlisting}
 \end{frame}
@@ -231,20 +231,37 @@
         format.xml { render :xml =>
           @planet.to_xml(
             :except => [:mass, :albedo]
+            # ...
           )
         }
       end
     end
   \end{lstlisting}
+
+  Darstellungslogik im Controller \badmark
+\end{frame}
+
+\begin{frame}[fragile]{to\_xml Methode}
+  \begin{lstlisting}
+    def show
+      @planet = Planet.find(params[:id])
+
+      respond_with(@planet)
+    end
+  \end{lstlisting}
+
+  Kopplung zwischen Datenmodell und Repräsentation \badmark
 \end{frame}
 
 \begin{frame}[fragile]{Representative View}
   \begin{lstlisting}
     r.element :id
     r.element :name
-    r.element :mass
-    r.element :albedo
+    r.element :mass if @fields.include?(:mass)
+    r.element :albedo if @fields.include?(:albedo)
   \end{lstlisting}
+
+  Repräsentation frei konfigurierbar \goodmark
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
