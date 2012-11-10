@@ -62,8 +62,23 @@ des Ovserver-Patterns in Java:
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Templates}
-  Beispiel, was \_.template erzeugt
+\begin{frame}[fragile]{Templates}
+  \begin{lstlisting}[language=JavaScript,gobble=4]
+    var template = "Hello, <%=user %>!";
+    this.template = _.template(template);
+  \end{lstlisting}
+  
+  \begin{lstlisting}[language=JavaScript,gobble=4]
+    function(obj){
+      var __p = '';
+      with (obj || {}) {
+        __p += 'Hello, ' +
+        (name) +
+        '!';
+      }
+      return __p;
+    }
+  \end{lstlisting}
 \end{frame}
 
 \begin{frame}{FormBuilder}
