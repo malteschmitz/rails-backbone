@@ -249,6 +249,20 @@
 \mode
 <presentation>
 
+\AtBeginSection[]{
+  \begingroup
+  \setbeamercolor{background canvas}{bg=maincolor!9}
+  \plain{
+    \Huge
+    
+    \vskip11ex
+    \begin{center}
+      \color{maincolor}\bfseries \insertsection
+    \end{center}
+  }
+  \endgroup
+}
+
 \newcommand{\itemref}[1]{\textbf{\color{maincolor}#1}}
 
 \newcommand{\term}[1]{{\color{blue}#1}}
