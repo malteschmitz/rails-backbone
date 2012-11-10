@@ -1,0 +1,43 @@
+\begin{tikzpicture}[
+    node/.style={
+      draw=maincolor,
+      thick,
+      rectangle,
+      rounded corners,
+      minimum width=6em,
+      minimum height=7ex,
+      inner sep=0ex,
+      fill=maincolor!18},
+    shorten >=1pt,
+    xs/.style={every edge/.append style={
+      transform canvas={xshift=#1}
+    }},
+    ys/.style={every edge/.append style={
+      transform canvas={yshift=#1}
+    }},
+    line/.style={
+      thick,
+      color=maincolor
+    },
+    node distance=2em and 0ex
+  ]
+
+  \node[node] (Controller) {Controller};
+  \node[node, below left=of Controller] (View) {View};
+  \node[node, below right=of Controller] (Model) {Model};
+
+
+  \draw[line]
+    (Controller) edge [->] (View)
+    (Controller) edge [->] (Model);
+    
+  \draw[line, ys=-1ex]
+    (View) edge [->] (Model);
+  
+  \draw[line, ys=1ex,dashed]
+    (Model) edge [->] (View);
+    
+  \draw[line,dashed]
+    (View) edge [->, out=90, in=180] (Controller);
+
+\end{tikzpicture}
