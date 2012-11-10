@@ -1,11 +1,6 @@
 \colorlet{maincolor}{nicegreen} % Color section in green
 \section{Webanwendungen}
 
-\frame{no content}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Webanwendungen vs. Desktopanwendung}
-
 \begin{frame}{Webanwendungen vs. Desktopanwendung}
   \begin{center}
     \input{images/applications.tex}
@@ -15,7 +10,20 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{moderne Webanwendungen}
 
-\frame{no content}
+\begin{frame}{moderne Webanwendungen}{}
+  \begin{columns}
+    \column{2cm}
+    \column{\textwidth}
+    {\color{maincolor}\bfseries Geschäftslogik im Server} \\
+      \qquad zentrale Berechnung und Datenhaltung \\[1ex]
+    {\color{maincolor}\bfseries zustandsloser Server} \\
+      \qquad Abfragen in sich komplett \\[1ex]
+    {\color{maincolor}\bfseries Daten auf der Leitung} \\
+      \qquad Daten frei von Darstellung \\[1ex]
+    {\color{maincolor}\bfseries Präsentation im Client} \\
+      \qquad spezielle Clients möglich
+  \end{columns}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{RESTful Webservice}
@@ -29,9 +37,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{REST-Architekturstil}
-  Representational State Transfer (REST)
-  \vskip2ex
+\begin{frame}{Representational State Transfer (REST)}
   \begin{tabularx}{\textwidth}{rX}
     \textbf{\color{maincolor}Identität} & Ressource eindeutig identifiziert \\
     \textbf{\color{maincolor}Manipulation} & Selbst beschreibende Ressourcen \\
@@ -63,7 +69,56 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Single-Page-Application-Client}
+\subsection{Single-Page-Application}
 
-\frame{no content}
+\begin{frame}{Single-Page-Application}
+  \begin{itemize}
+    \item gesamter Client durch Laden einer Website im Browser
+    \item Daten werden per AJAX bei Bedarf nachgeladen\\[2ex]
+    \item[\goodmark] Client agiert als Anwendung\only<article>{:
+      Navigationselemente werden nicht neu geladen und Flackern der Seite wird
+      vermieden.}
+    \item[\goodmark] Client reagiert schneller\\[2ex]
+    \item[\badmark] Browser-Historie muss manuell befüllt werden
+    \item[\badmark] keine Zugänglichkeit ohne JavaScript
+      \only<article>{Suchmaschinen können nicht mehr so gut indizieren, spezielle
+      Browser für Behinderte werden ausgeschlossen, \ldots}
+    \end{itemize}
+\end{frame}
 
+\begin{frame}{AJAX-Architektur}{}
+  {\color{maincolor}\bfseries Initialisierung}
+  \begin{enumerate}
+    \item Client vom Server laden 
+      {\scriptsize\\\color{gray} über klassischen GET-Request im Browser\\[2ex]}
+    \item Clien starten 
+      {\scriptsize\\\color{gray} über eingebundenes JavaScript\\[2ex]}
+  \end{enumerate}    
+  
+  \vfill
+  
+  {\color{maincolor}\bfseries Interaktionsschleife}
+  \begin{enumerate}
+    \item Daten als JSON laden 
+      {\scriptsize\\\color{gray} über GET-Request mit \texttt{XMLHttpRequest}-Objekt\\[2ex]}
+    \item Daten darstellen 
+      {\scriptsize\\\color{gray} über Manipulation des Document Object Model (DOM)\\[2ex]}
+    \item auf Anwender-Interaktion reagieren 
+      {\scriptsize\\\color{gray} über Ereignis-Registrierung im DOM\\[2ex]}
+    \item Daten an Server senden
+      {\scriptsize\\\color{gray} über POST/PUT/DELETE-Request mit \texttt{XMLHttpRequest}\\[2ex]}
+  \end{enumerate}
+\end{frame}
+
+\mode
+<article>
+
+AJAX stand ursprünglich für
+\textbf{A}synchronous \textbf{J}avaScript \textbf{a}nd \textbf{X}ML.
+Inzwischen wird meistens die JavaScript Object Notation (JSON)
+verwendet und es sind auch synchrone Anfragen mölich, sodass
+AJAX eher ein stehender Begriff für einen Architkturstil ist als
+eine konkrete Beschreibung der verwendeten Technik.
+
+\mode
+<all>
