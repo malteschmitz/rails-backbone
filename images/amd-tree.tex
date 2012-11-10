@@ -1,0 +1,42 @@
+\begin{tikzpicture}[
+    grow via three points={
+      one child at (-3.55,-0.5) and
+      two children at (-3.55,-0.5) and
+      (-3.55,-1)
+    },
+    edge from parent path={
+      ($(\tikzparentnode.south west) + (.2,0)$) |- (\tikzchildnode.west)
+    },
+    every node/.style={
+      anchor=west,
+      inner sep=0pt,
+      text width=8cm
+    }
+  ]
+
+  \pgfdeclareimage[height=12pt]{text}{images/icons/text}
+  \pgfdeclareimage[height=12pt]{html}{images/icons/html}
+  \pgfdeclareimage[height=12pt]{folder}{images/icons/folder}
+
+  \newcommand{\fld}{\raisebox{-2.5pt}{\pgfuseimage{folder}}\hskip2pt}
+  \newcommand{\txt}{\raisebox{-2.5pt}{\pgfuseimage{text}}\hskip2pt}
+  \newcommand{\htm}{\raisebox{-2.5pt}{\pgfuseimage{html}}\hskip2pt}
+
+  \node {\fld public}
+    child { node[file index] {\htm index.html} }
+    child { node[file main] {\txt main.js} }
+    child { node {\fld libs}
+      child { node {\txt require.js} }
+      child { node {\txt text.js} }
+      child { node {\txt backbone.js} }
+    }
+    child [missing] {}
+    child [missing] {}
+    child [missing] {}
+    child { node {\fld app}
+      child { node[file model] {\txt models/order.js} }
+      child { node[file view] {\txt views/orders/show.js} }
+      child { node[file template] {\htm templates/orders/show.html} }
+    };
+
+\end{tikzpicture}

@@ -22,7 +22,8 @@
   decorations.pathreplacing,%
   backgrounds,%
   arrows,%
-  automata%
+  automata,%
+  trees%
 }
 
 % define colors used by presentation theme AND article
@@ -53,9 +54,20 @@
   rulecolor=\color{maincolor!70},%
   framerule=1pt,%
   showstringspaces=false,%
+  upquote=true}
   upquote=true,%
   framexleftmargin=3pt,%
-  framexrightmargin=3pt%
+  framexrightmargin=3pt,%
+  upquote=true}
+
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break, for},
+  ndkeywords={boolean, throw, this},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]"
 }
 
 \usepackage{tabularx}
