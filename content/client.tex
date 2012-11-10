@@ -81,8 +81,17 @@ des Ovserver-Patterns in Java:
   \end{lstlisting}
 \end{frame}
 
-\begin{frame}{FormBuilder}
-  no content
+\begin{frame}[fragile]{FormBuilder}
+  \begin{lstlisting}[language=JavaScript,gobble=4]
+    tag('p',
+      {class: 'alert', id:'user'},
+      'Nutzer nicht vorhanden');
+  \end{lstlisting}
+  \begin{lstlisting}[language=HTML,gobble=4]
+    <p class="alert" id="user">
+      Nutzer nicht vorhanden
+    </p>
+  \end{lstlisting}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
