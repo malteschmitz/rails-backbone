@@ -78,7 +78,30 @@ des Ovserver-Patterns in Java:
   }
 }
 
-\begin{frame}{Asynchronous Module Definition mit Require.js}
+\begin{frame}{Asynchronous Module Definition}
+  \begin{columns}
+    \column{0.5\textwidth}
+    {\large\bfseries\color{maincolor}klassisch}
+    \setbeamertemplate{itemize item}{\badmark}
+    \begin{itemize}
+      \item Definitionen über direkt ausgeführten Code
+      \item Bibliotheken über globale Variablen und \lstinline[language=HTML]-<script>-
+      \item Reihenfolge der \lstinline[language=HTML]-<script>--Tags wichtig
+      \item Kompression schwierig
+    \end{itemize}
+    \column{0.5\textwidth}
+    {\large\bfseries\color{maincolor}mit Modulen}
+    \setbeamertemplate{itemize item}{\goodmark}
+    \begin{itemize}
+      \item Definitionen über Funktion
+      \item Bibliotheken über Laden von Abhängigkeiten
+      \item Reihenfolge automatisch korrekt
+      \item Tools zur Kompression
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Asynchronous Module Definition\\ mit Require.js}
   \begin{center}
     \input{images/amd-tree}
   \end{center}
