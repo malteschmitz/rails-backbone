@@ -7,12 +7,12 @@ all: $(doc).pdf
 
 dist: FORCE $(doc).pdf $(doc)-script.pdf
 
-$(doc).pdf: $(doc).tex content/main.tex content/webapplications.tex content/webservice.tex content/client.tex inc/style.tex inc/beamerthemeMalte.sty inc/beamercolorthemeMalte.sty
+$(doc).pdf: $(doc).tex content/main.tex content/webapplications.tex content/webservice.tex content/client.tex inc/style.tex inc/beamerthemeMalte.sty inc/beamercolorthemeMalte.sty images/applications.tex images/model-view-controller.tex images/client-arch.tex images/server-arch.tex images/events.tex
 	TEXINPUTS="$(TEXINPUTS)" $(latex) $(doc).tex
 	(egrep -q $(rerun) $(doc).log && TEXINPUTS="$(TEXINPUTS)" $(latex) $(doc).tex) || true
 	(egrep -q $(rerun) $(doc).log && TEXINPUTS="$(TEXINPUTS)" $(latex) $(doc).tex) || true
 	
-$(doc)-script.pdf: $(doc)-script.tex content/main.tex content/webapplications.tex content/webservice.tex content/client.tex inc/style.tex inc/beamerthemeMalte.sty inc/beamercolorthemeMalte.sty
+$(doc)-script.pdf: $(doc)-script.tex content/main.tex content/webapplications.tex content/webservice.tex content/client.tex inc/style.tex inc/beamerthemeMalte.sty inc/beamercolorthemeMalte.sty images/applications.tex images/model-view-controller.tex images/client-arch.tex images/server-arch.tex images/events.tex
 	TEXINPUTS="$(TEXINPUTS)" $(latex) $(doc)-script.tex
 	(egrep -q $(rerun) $(doc)-script.log && TEXINPUTS="$(TEXINPUTS)" $(latex) $(doc)-script.tex) || true
 	(egrep -q $(rerun) $(doc)-script.log && TEXINPUTS="$(TEXINPUTS)" $(latex) $(doc)-script.tex) || true
