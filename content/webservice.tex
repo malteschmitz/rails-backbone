@@ -5,6 +5,11 @@
 %\end{frame}
 
 \colorlet{maincolor}{bordeaux} % Color section in bordeaux
+\lstset{
+  language=Ruby,
+  gobble=4,
+  basicstyle=\ttfamily\small
+}
 
 \section[Webservice]{Webservice mit Rails 3.2}
 
@@ -90,7 +95,7 @@
       \coord{edit left}edit & GET & Formular zum Editieren\coord{edit right}
     \end{zebratabular}
   \end{center}
-  
+
   \begin{tikzpicture}[remember picture,overlay]
     \only<2>{\draw[red,thick]
       ($(new left) + (-.5ex,.5ex) $) --
@@ -101,11 +106,11 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Rails3 Responder}
+\subsection{Responder}
 
-\begin{frame}[fragile]{Rails3 Responder}
+\begin{frame}[fragile]{Responder}
   Alte Implementierung:
-  \begin{lstlisting}[language=Ruby,gobble=4,basicstyle=\ttfamily\small]
+  \begin{lstlisting}
     class PeopleController < ApplicationController
       def index
         @people = Person.all
@@ -121,9 +126,9 @@
   \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Rails3 Responder}
+\begin{frame}[fragile]{Responder}
   Neue Implementierung:
-  \begin{lstlisting}[language=Ruby,gobble=4,basicstyle=\ttfamily\small]
+  \begin{lstlisting}
     class PeopleController < ApplicationController
       respond_to :html, :xml, :json
 
@@ -137,13 +142,30 @@
   \end{lstlisting}
 \end{frame}
 
-\begin{frame}{Responder}
+\begin{frame}{Responder Ablauf}
   Request for an XML response:
   \begin{enumerate}
     \item search for a template in \lstinline|people/index.xml|
     \item invoke \lstinline|to_xml|
     \item call \lstinline|to_format|
   \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{HTTP-Semantik}
+  \begin{lstlisting}
+    def create
+      @user = User.new(params[:user])
+      if @user.save
+        flash[:notice] = 'User created.'
+      end
+      respond_with(@user)
+    end
+  \end{lstlisting}
+
+  \begin{description}
+    \item[Erfolg] Status 201 Created
+    \item[Fehler] Status 422 Unprocessable Entity
+  \end{description}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
