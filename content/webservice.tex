@@ -111,13 +111,13 @@
 \begin{frame}[fragile]{Responder}
   Alte Implementierung:
   \begin{lstlisting}
-    class PeopleController < ApplicationController
+    class PlanetsController < ApplicationController
       def index
-        @people = Person.all
+        @planets = Planet.all
         respond_to do |format|
           format.html # index.html.erb
-          format.xml  { render :xml => @people}
-          format.json { render :json => @people}
+          format.xml  { render :xml => @planets}
+          format.json { render :json => @planets}
         end
       end
 
@@ -129,12 +129,12 @@
 \begin{frame}[fragile]{Responder}
   Neue Implementierung:
   \begin{lstlisting}
-    class PeopleController < ApplicationController
+    class PlanetsController < ApplicationController
       respond_to :html, :xml, :json
 
       def index
-        @people = Person.all
-        respond_with(@people)
+        @planets = Planet.all
+        respond_with(@planets)
       end
 
       ...
@@ -154,11 +154,11 @@
 \begin{frame}[fragile]{HTTP-Semantik}
   \begin{lstlisting}
     def create
-      @user = User.new(params[:user])
-      if @user.save
-        flash[:notice] = 'User created.'
+      @planet = Planet.new(params[:planet])
+      if @planet.save
+        flash[:notice] = 'Planet created.'
       end
-      respond_with(@user)
+      respond_with(@planet)
     end
   \end{lstlisting}
 
@@ -178,14 +178,17 @@
   \end{itemize}
 
   \begin{lstlisting}[language=HTML]
-    <h1>Hello, <%=h @user.name %></h1>
-    <%= render @user %>
+    <h1>Sonnensystem <%=h @solarsystem %></h1>
+    <% @planets.each do |planet| %>
+      <%= render @planet %>
+    <% end %>
   \end{lstlisting}
 
-  User Partial
   \begin{lstlisting}[language=HTML]
     <p>
-      Good bye <%=h user.name =>
+      Der Planet <%=h planet.name =>
+      hat die Masse <%=h planet.mass =>
+      und die Albedo <%=h planet.albedo =>.
     </p>
   \end{lstlisting}
 \end{frame}
@@ -197,6 +200,7 @@
     \begin{column}{.45\textwidth}
       \begin{lstlisting}[language={},gobble=8]
         {
+          "id": 42,
           "name": "Mars",
           "mass": 6.419e23,
           "albedo": 0.15
@@ -206,6 +210,7 @@
     \begin{column}{.45\textwidth}
       \begin{lstlisting}[language=XML,gobble=8]
         <planet
+          id="42"
           name="Mars"
           mass="6.419e23"
           albedo="0.15"
