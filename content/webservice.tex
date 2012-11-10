@@ -171,7 +171,25 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Views}
 
-\frame{no content}
+\begin{frame}[fragile]{ERB Views}
+  \begin{itemize}
+    \item Ruby Code eingebettet in HTML-Dokumente
+    \item Unterstützt Partials
+  \end{itemize}
+
+  \begin{lstlisting}[language=HTML]
+    <h1>Hello, <%=h @user.name %></h1>
+    <%= render @user %>
+  \end{lstlisting}
+
+  User Partial
+  \begin{lstlisting}[language=HTML]
+    <p>
+      Good bye <%=h user.name =>
+    </p>
+  \end{lstlisting}
+\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Assoziationen}
