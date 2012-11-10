@@ -190,6 +190,30 @@
   \end{lstlisting}
 \end{frame}
 
+\begin{frame}[fragile]{JSON- und XML-Repräsentationen}
+  \lstset{identifierstyle=\color{black}}
+
+  \begin{columns}[t]
+    \begin{column}{.45\textwidth}
+      \begin{lstlisting}[language={},gobble=8]
+        {
+          "name": "Mars",
+          "mass": 6.419e23,
+          "albedo": 0.15
+        }
+      \end{lstlisting}
+    \end{column}
+    \begin{column}{.45\textwidth}
+      \begin{lstlisting}[language=XML,gobble=8]
+        <planet
+          name="Mars"
+          mass="6.419e23"
+          albedo="0.15"
+        />
+      \end{lstlisting}
+    \end{column}
+  \end{columns}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Assoziationen}
