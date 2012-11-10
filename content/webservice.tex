@@ -103,15 +103,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Rails3 Responder}
 
-\begin{frame}[fragile]{Alte Implementierung}
+\begin{frame}[fragile]{Rails3 Responder}
+  Alte Implementierung:
   \begin{lstlisting}[language=Ruby,gobble=4,basicstyle=\ttfamily\small]
-    class UsersController < ApplicationController
+    class PeopleController < ApplicationController
       def index
-        @users = User.all
+        @people = Person.all
         respond_to do |format|
           format.html # index.html.erb
-          format.xml  { render :xml => @users}
-          format.json { render :json => @users}
+          format.xml  { render :xml => @people}
+          format.json { render :json => @people}
         end
       end
 
@@ -120,17 +121,29 @@
   \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Neue Implementierung}
+\begin{frame}[fragile]{Rails3 Responder}
+  Neue Implementierung:
   \begin{lstlisting}[language=Ruby,gobble=4,basicstyle=\ttfamily\small]
-    class UsersController < ApplicationController
+    class PeopleController < ApplicationController
+      respond_to :html, :xml, :json
+
       def index
-        @users = User.all
-        respond_with @users
+        @people = Person.all
+        respond_with(@people)
       end
 
       ...
     end
   \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Responder}
+  Request for an XML response:
+  \begin{enumerate}
+    \item search for a template in \lstinline|people/index.xml|
+    \item invoke \lstinline|to_xml|
+    \item call \lstinline|to_format|
+  \end{enumerate}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
