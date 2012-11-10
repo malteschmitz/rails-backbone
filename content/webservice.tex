@@ -111,7 +111,8 @@
 \begin{frame}[fragile]{Responder}
   Alte Implementierung:
   \begin{lstlisting}
-    class PlanetsController < ApplicationController
+    class PlanetsController <
+        ApplicationController
       def index
         @planets = Planet.all
         respond_to do |format|
@@ -129,7 +130,8 @@
 \begin{frame}[fragile]{Responder}
   Neue Implementierung:
   \begin{lstlisting}
-    class PlanetsController < ApplicationController
+    class PlanetsController <
+        ApplicationController
       respond_to :html, :xml, :json
 
       def index
@@ -218,6 +220,31 @@
       \end{lstlisting}
     \end{column}
   \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{to\_xml Methode}
+  \begin{lstlisting}
+    def show
+      @planet = Planet.find(params[:id])
+
+      respond_to do |format|
+        format.xml { render :xml =>
+          @planet.to_xml(
+            :except => [:mass, :albedo]
+          )
+        }
+      end
+    end
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Representative View}
+  \begin{lstlisting}
+    r.element :id
+    r.element :name
+    r.element :mass
+    r.element :albedo
+  \end{lstlisting}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
