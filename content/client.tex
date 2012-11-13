@@ -253,6 +253,79 @@ des Ovserver-Patterns in Java:
 
 \subsection{Dokumentation}
 
-\begin{frame}{JSDoc}
-  no content
+\begin{frame}[fragile]{RDoc}{app/models/oder.rb}
+  \begin{lstlisting}[language=Ruby,gobble=4]
+    # -*- encoding : utf-8 -*-
+    # == Schema Information
+    #
+    # Table name: orders
+    #
+    #  id          :integer          not null, primary key
+    #  customer_id :integer
+    #  user_id     :integer          not null
+
+    class Order < ActiveRecord::Base    
+      # Checks if customer and user are set.
+      def complete?
+        !user.blank? && !customer.blank?
+      end
+    end
+  \end{lstlisting}
+  
+  \vskip3ex
+  
+  \begin{lstlisting}[language={},gobble=4]
+    rake doc:app
+  \end{lstlisting}
 \end{frame}
+
+{
+  \setbeamertemplate{background canvas}{\includegraphics[width=\paperwidth]{images/rdoc}}
+  \frame[plain]{}
+}
+
+\begin{frame}[fragile]{JSDoc}{public/app/models/order.js}
+  \begin{lstlisting}[language=JavaScript,gobble=4]
+    define(['backbone', 'app/models/base'],
+        function (Backbone, ApplicationModel) {
+      /**
+       @class OrderModel
+       @augments ApplicationModel
+       */
+      var OrderModel = ApplicationModel.extend(
+      /**
+       @lends OrderModel#
+       */
+      {
+        /**
+         * Name of this model.
+         */
+        name: 'order'
+      });
+      return OrderModel;
+    });
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{JSDoc}{lib/tasks/jsdoc.rake}
+  \begin{lstlisting}[language=Ruby,gobble=4]
+    namespace :doc do
+      desc "Generate docs for the client."
+      task :client do
+        `jsdoc -r -d doc/client public/main.js public/app`
+        puts "Created doc/client."
+      end
+    end
+  \end{lstlisting}  
+  
+  \vskip3ex
+
+  \begin{lstlisting}[language={},gobble=4]
+    rake doc:client
+  \end{lstlisting}
+\end{frame}
+
+{
+  \setbeamertemplate{background canvas}{\includegraphics[width=\paperwidth]{images/jsdoc}}
+  \frame[plain]{}
+}
