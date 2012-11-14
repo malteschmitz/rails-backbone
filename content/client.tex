@@ -103,6 +103,58 @@ des Ovserver-Patterns in Java:
   \end{lstlisting}
 \end{frame}
 
+\begin{frame}[fragile]{FormBuilder}
+  \begin{lstlisting}[language=JavaScript,gobble=4]
+    formText('designator');
+  \end{lstlisting}
+  \begin{lstlisting}[language=HTML,gobble=4]
+    <div
+        class="control-group">
+      <label
+          for="designator"
+          class="control-label">
+        Bezeichner
+      </label>
+      <input
+          type="text"
+          id="designator"
+          autocomplete="off"
+          value="Veranstaltungsraum">
+    </div>
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Internationalization (I18N)}
+  \begin{itemize}
+    \item \lstinline[lang=JavaScript]-view.formText('designator')-\\
+      \hfill\textcolor{gray}{ruft auf}\hfill\strut
+    \item \lstinline[lang=JavaScript]-view.translate('models.' + this.model.name-\\
+      \qquad  \lstinline[lang=JavaScript]-+ '.designator')-\\
+      \hfill\textcolor{gray}{ruft auf}\hfill\strut
+    \item \lstinline[lang=JavaScript]-i18n.getValue('models.room_type'-\\
+      \qquad \lstinline[lang=JavaScript]- + '.designator')-\\
+      \hfill\textcolor{gray}{ruft auf}\hfill\strut
+    \item \lstinline[lang=JavaScript]-i18n.find('de.models.room_type'- \\
+      \qquad \lstinline[lang=JavaScript]-+ '.designator')-\\
+      \hfill\textcolor{gray}{basiert auf}\hfill\strut
+    \item \lstinline[lang=JavaScript]-_.extend(YAML.eval(de), YAML.eval(en))-
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{FormBuilder}
+  \begin{lstlisting}[language=HTML,gobble=4]
+    <h3>
+      <%=t('.title') %>
+      <%=model.escape('occasion') %>
+    </h3>
+    <p>
+      <a href="#"><%=t('.back') %></a>
+      | <a href="#"><%=t('.edit') %></a>
+      | <a href="#"><%=t('.print') %></a>
+    </p>
+  \end{lstlisting}
+\end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Routing}
 
