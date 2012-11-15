@@ -27,7 +27,27 @@
 \subsection{Modelle und Sammlungen}
 
 \begin{frame}{Models}
-  no content
+  \begin{itemize}
+    \item Daten der Server-Modelle
+    \item Logik zur Datenmanipulation
+    \item direkt berechnete Eigenschaften
+    \item kennen Server über Sammlung
+  \end{itemize}
+
+  \begin{block}{Methoden}
+    \begin{itemize}
+      \item \texttt{get}, \texttt{set}, \texttt{has}, \texttt{unset}
+      \item \texttt{fetch}, \texttt{save}, \texttt{destroy}
+      \item \texttt{parse}, \texttt{toJSON}
+    \end{itemize}
+  \end{block}
+  
+  \begin{block}{Ereignisse}
+    \begin{itemize}
+      \item \texttt{change}, \texttt{attribute:change}
+      \item \texttt{destroy}
+    \end{itemize}
+  \end{block}
 \end{frame}
 
 \begin{Frame}[fragile]{Events in Backbone}
@@ -65,10 +85,7 @@ des Ovserver-Patterns in Java:
 \subsection{Ansichten}
 
 \begin{frame}{Views}
-  \begin{itemize}
-    \item jQuery
-    \item Events
-  \end{itemize}
+  no content
 \end{frame}
 
 \begin{frame}[fragile]{Templates}
