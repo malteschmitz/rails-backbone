@@ -10,16 +10,16 @@
 \begin{frame}{Backbone.js benötigt}
   \begin{itemize}
     \item Underscore.js \\
-      \textcolor{gray}{\texttt{\_.each}, \texttt{\_.map},
-      \texttt{\_.reduce}, \\
-      \texttt{\_.all}, \texttt{\_.any}, \texttt{\_.contains}, \\
-      \texttt{\_.escape}, \texttt{\_.result}, \texttt{\_.template},
-      \ldots} \\[5ex]
+      \lstinline-_.each-, \lstinline-_.map-,
+      \lstinline-_.reduce-, \\
+      \lstinline-_.all-, \lstinline-_.any-, \lstinline-_.contains-, \\
+      \lstinline-_.escape-, \lstinline-_.result-, \lstinline-_.template-,
+      \ldots \\[5ex]
     \item jQuery (oder zepto.js) \\
-      \textcolor{gray}{\texttt{\$()}, \texttt{\$().html},
-      \texttt{\$().append}, \\
-      \texttt{\$().on}, \texttt{\$().addClass}, \texttt{\$().val}, \\
-      \texttt{\$.ajax}, \ldots}
+      \lstinline-$-, \lstinline-$().html-,
+      \lstinline-$().append-, \\
+      \lstinline-$().on-, \lstinline-$().addClass-, \lstinline-$().val-, \\
+      \lstinline-$.ajax-, \ldots
   \end{itemize}
 \end{frame}
 
@@ -35,22 +35,18 @@
   \end{itemize}
 
   \begin{block}{Methoden}
-    \begin{itemize}
-      \item \texttt{get}, \texttt{set}, \texttt{has}, \texttt{unset}
-      \item \texttt{fetch}, \texttt{save}, \texttt{destroy}
-      \item \texttt{parse}, \texttt{toJSON}
-    \end{itemize}
+    \lstinline-get-, \lstinline-set-, \lstinline-has-, \lstinline-unset-, \\
+    \lstinline-fetch-, \lstinline-save-, \lstinline-destroy-, \\
+    \lstinline-parse-, \lstinline-toJSON-, \ldots
   \end{block}
   
   \begin{block}{Ereignisse}
-    \begin{itemize}
-      \item \texttt{change}, \texttt{attribute:change}
-      \item \texttt{destroy}
-    \end{itemize}
+    \lstinline-change-, \lstinline-attribute:change-, \\
+    \lstinline-destroy-, \ldots
   \end{block}
 \end{frame}
 
-\begin{Frame}[fragile]{Events in Backbone}
+\begin{Frame}[fragile]{Ereignisse in Backbone}
   \begin{center}
     \input{images/events}
   \end{center}
@@ -59,13 +55,13 @@
 \mode
 <article>
 
-Unterschiede zwischen Events in Backbone und der klassischen Realisierung
+Unterschiede zwischen Ereignissen in Backbone und der klassischen Realisierung
 des Ovserver-Patterns in Java:
 \begin{compactitem}
   \item Es gibt benannte Ereignisse, damit kann ein zu beobachtendes Objekt
     verschiedenen Mengen von Beobachtern haben, die bei unterschiedlichen
     Situationen benachrichtigt werden.
-  \item Events werden nicht vorher registriert, dass heißt, das zu beobachtende
+  \item Ereignisse werden nicht vorher registriert, dass heißt, das zu beobachtende
     Objekt ruft einfach \lstinline-trigger- mit dem Namen des Ereignisses auf.
   \item Ein Beobachter muss nicht sich als Objekt mit \lstinline-addListener-
     am zu beobachten Objekt registriert, sondern mit \lstinline-bind-
