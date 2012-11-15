@@ -267,7 +267,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Assoziationen}
 
-\begin{frame}[fragile]{Nutzer / Gruppen}
+\begin{frame}[fragile]{Assoziationen: Nutzer / Gruppen}
   \begin{lstlisting}
     class User < ActiveRecord::Base
       has_and_belongs_to_many :groups
@@ -329,7 +329,23 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Validierung}
 
-\begin{frame}[fragile]{Gruppen-Nutzer-Controller Destroy}
+\begin{frame}[fragile]{Validierung von Referentieller Integrität}
+  \begin{lstlisting}
+    class Moon < ActiveRecord::Base
+      belongs_to :planets
+      attr_accessible :name, :mass
+
+      # Validations
+      validates :name, :mass, 
+        :presence => true
+      
+      validates :planet, 
+        :referential_integrity => true
+    end
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Validierung von Referentieller Integrität}
   \begin{lstlisting}
     class ReferentialIntegrityValidator < 
         ActiveModel::EachValidator
