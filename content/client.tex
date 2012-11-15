@@ -24,18 +24,20 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Modelle und Sammlungen}
+\subsection{Models und Collections}
 
 \begin{frame}{Models}
   \begin{itemize}
     \item Daten der Server-Modelle
     \item Logik zur Datenmanipulation
     \item direkt berechnete Eigenschaften
-    \item kennen Server über Sammlung
+    \item kennen Server über Collection
   \end{itemize}
 
+  \vskip3ex
+
   \begin{block}{Methoden}
-    \lstinline-get-, \lstinline-set-, \lstinline-has-, \lstinline-unset-, \\
+    \lstinline-get-, \lstinline-escape-, \lstinline-set-, \lstinline-has-, \lstinline-unset-, \\
     \lstinline-fetch-, \lstinline-save-, \lstinline-destroy-, \\
     \lstinline-parse-, \lstinline-toJSON-, \ldots
   \end{block}
@@ -74,14 +76,71 @@ des Ovserver-Patterns in Java:
 <all>
 
 \begin{frame}{Collections}
-  no content
+  \begin{itemize}
+    \item geordnete Menge von Models
+    \item gehört zu einer Modellklasse
+    \item Verbindung zum Server
+    \item Metadaten, z.\,B. Paginierung
+  \end{itemize}
+
+  \vskip3ex
+
+  \begin{block}{Methoden}
+    \lstinline-add-, \lstinline-remove-, \lstinline-reset- \\
+    \lstinline-parse-, \lstinline-toJSON-,
+    \lstinline-fetch-
+  \end{block}
+
+  \begin{block}{Ereignisse}
+    \lstinline-reset-,
+    \lstinline-add-, \lstinline-remove-, \lstinline-destroy-
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Beispiel}
+  \begin{lstlisting}[language=JavaScript,gobble=4]
+    var OrderModel = Backbone.Model.extend({
+      // Logik des Modells
+    });
+    
+    var OrdersCollection =
+        Backbone.Collection.extend({
+      model: OrderModel,
+      url: 'orders',
+      parse: function(response) {
+        return response.orders;
+      }
+    });
+    
+    var orders = new OrdersCollection();
+    orders.bind('add', function(order) {
+      console.log(order.get('designator'));
+    });
+    orders.fetch();
+  \end{lstlisting}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Ansichten}
+\subsection{Views}
 
 \begin{frame}{Views}
-  no content
+  \begin{itemize}
+    \item mehr Konvention als Code
+    \item enthalten Code einer GUI-Ansicht
+  \end{itemize}
+
+  \vskip3ex
+
+  \begin{block}{Eigenschaften}
+    \lstinline-tagName-, \lstinline-el-, \\
+    \lstinline-events-, \\
+    \lstinline-$el-, \ldots
+  \end{block}
+
+  \begin{block}{Methoden}
+    \lstinline-$-, \\
+    \lstinline-render-, \ldots
+  \end{block}
 \end{frame}
 
 \begin{frame}[fragile]{Templates}
@@ -171,12 +230,39 @@ des Ovserver-Patterns in Java:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Routing}
 
-\begin{frame}{Routing}
+\begin{frame}[fragile]{Backbone.Router}
   \begin{itemize}
-    \item StateModel
-    \item Router
-    \item app.initialize()
+    \item Reaktivierung der Browser-Historie
+    \item neuer Eintrag mit \lstinline-navigate(fragment)-
+    \item Navigation über Anker in URL \\
+      (oder HTML5 \lstinline-pushState-)
+    \item Wenn alle Router konfiguriert \\
+      \begin{lstlisting}[language=JavaScript,gobble=8]
+        Backbone.history.start();
+      \end{lstlisting}
   \end{itemize}
+\end{frame}
+
+\begin{frame}{StateModel}
+  \begin{alertblock}{zirkuläre Abhängigkeiten}
+    \begin{description}
+      \item[Router] \lstinline-view = new View();-
+      \item[Benutzer] Interaktion
+      \item[View] \lstinline-router.navigate(fragment);-
+    \end{description}
+  \end{alertblock}
+  
+  \vskip1ex
+  
+  \begin{exampleblock}{ereignisgesteuerte Architektur} 
+    \begin{description}
+      \item[State] \lstinline-view = new View();-
+      \item[State] \lstinline-view.bind('navigate', state.nav);-
+      \item[Benutzer] Interaktion
+      \item[View] \lstinline-view.trigger('nav', options);-
+      \item[State] \lstinline-router.navigate(fragment);-
+    \end{description}
+  \end{exampleblock}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
