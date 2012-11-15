@@ -1,32 +1,37 @@
 \colorlet{maincolor}{niceblue} % Color section in blue
 \section[Client]{Client mit Backbone.js}
 
-\begin{frame}{Architektur}
+\begin{Frame}{Architektur}
   \begin{center}
     \input{images/client-arch}
   \end{center}
-\end{frame}
+\end{Frame}
 
-\begin{frame}{Backbone.js benötigt}
+\begin{Frame}{Backbone.js benötigt}
   \begin{itemize}
-    \item Underscore.js \\
+    \item Underscore.js \newline
       \lstinline-_.each-, \lstinline-_.map-,
-      \lstinline-_.reduce-, \\
-      \lstinline-_.all-, \lstinline-_.any-, \lstinline-_.contains-, \\
+      \lstinline-_.reduce-, \newline
+      \lstinline-_.all-, \lstinline-_.any-, \lstinline-_.contains-, \newline
       \lstinline-_.escape-, \lstinline-_.result-, \lstinline-_.template-,
-      \ldots \\[5ex]
-    \item jQuery (oder zepto.js) \\
+      \ldots
+  \end{itemize}
+  
+  \only<presentation>{\vskip5ex}
+  
+  \begin{itemize}
+    \item jQuery (oder zepto.js) \newline
       \lstinline-$-, \lstinline-$().html-,
-      \lstinline-$().append-, \\
-      \lstinline-$().on-, \lstinline-$().addClass-, \lstinline-$().val-, \\
+      \lstinline-$().append-, \newline
+      \lstinline-$().on-, \lstinline-$().addClass-, \lstinline-$().val-, \newline
       \lstinline-$.ajax-, \ldots
   \end{itemize}
-\end{frame}
+\end{Frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Models und Collections}
 
-\begin{frame}{Models}
+\begin{Frame}{Models}
   \begin{itemize}
     \item Daten der Server-Modelle
     \item Logik zur Datenmanipulation
@@ -36,17 +41,17 @@
 
   \vskip3ex
 
-  \begin{block}{Methoden}
-    \lstinline-get-, \lstinline-escape-, \lstinline-set-, \lstinline-has-, \lstinline-unset-, \\
-    \lstinline-fetch-, \lstinline-save-, \lstinline-destroy-, \\
+  \begin{Block}{Methoden}
+    \lstinline-get-, \lstinline-escape-, \lstinline-set-, \lstinline-has-, \lstinline-unset-, \newline
+    \lstinline-fetch-, \lstinline-save-, \lstinline-destroy-, \newline
     \lstinline-parse-, \lstinline-toJSON-, \ldots
-  \end{block}
+  \end{Block}
   
-  \begin{block}{Ereignisse}
-    \lstinline-change-, \lstinline-attribute:change-, \\
+  \begin{Block}{Ereignisse}
+    \lstinline-change-, \lstinline-attribute:change-, \newline
     \lstinline-destroy-, \ldots
-  \end{block}
-\end{frame}
+  \end{Block}
+\end{Frame}
 
 \begin{Frame}[fragile]{Ereignisse in Backbone}
   \begin{center}
@@ -75,7 +80,7 @@ des Ovserver-Patterns in Java:
 \mode
 <all>
 
-\begin{frame}{Collections}
+\begin{Frame}{Collections}
   \begin{itemize}
     \item geordnete Menge von Models
     \item gehört zu einer Modellklasse
@@ -85,19 +90,19 @@ des Ovserver-Patterns in Java:
 
   \vskip3ex
 
-  \begin{block}{Methoden}
-    \lstinline-add-, \lstinline-remove-, \lstinline-reset- \\
+  \begin{Block}{Methoden}
+    \lstinline-add-, \lstinline-remove-, \lstinline-reset- \newline
     \lstinline-parse-, \lstinline-toJSON-,
     \lstinline-fetch-
-  \end{block}
+  \end{Block}
 
-  \begin{block}{Ereignisse}
+  \begin{Block}{Ereignisse}
     \lstinline-reset-,
     \lstinline-add-, \lstinline-remove-, \lstinline-destroy-
-  \end{block}
-\end{frame}
+  \end{Block}
+\end{Frame}
 
-\begin{frame}[fragile]{Beispiel}
+\begin{Frame}[fragile]{Beispiel}
   \begin{lstlisting}[language=JavaScript,gobble=4]
     var OrderModel = Backbone.Model.extend({
       // Logik des Modells
@@ -118,7 +123,7 @@ des Ovserver-Patterns in Java:
     });
     orders.fetch();
   \end{lstlisting}
-\end{frame}
+\end{Frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Views}
@@ -131,19 +136,19 @@ des Ovserver-Patterns in Java:
 
   \vskip3ex
 
-  \begin{block}{Eigenschaften}
-    \lstinline-tagName-, \lstinline-el-, \\
-    \lstinline-events-, \\
+  \begin{Block}{Eigenschaften}
+    \lstinline-tagName-, \lstinline-el-, \newline
+    \lstinline-events-, \newline
     \lstinline-$el-, \ldots
-  \end{block}
+  \end{Block}
 
-  \begin{block}{Methoden}
-    \lstinline-$-, \\
+  \begin{Block}{Methoden}
+    \lstinline-$-, \newline
     \lstinline-render-, \ldots
-  \end{block}
+  \end{Block}
 \end{frame}
 
-\begin{frame}[fragile]{Templates}
+\begin{Frame}[fragile]{Templates}
   \begin{lstlisting}[language=JavaScript,gobble=4]
     var template = "Hello, <%=user %>!";
     this.template = _.template(template);
@@ -160,9 +165,9 @@ des Ovserver-Patterns in Java:
       return __p;
     }
   \end{lstlisting}
-\end{frame}
+\end{Frame}
 
-\begin{frame}[fragile]{FormBuilder}
+\begin{Frame}[fragile]{FormBuilder}
   \begin{lstlisting}[language=JavaScript,gobble=4]
     tag('p',
       {class: 'alert', id:'user'},
@@ -173,7 +178,7 @@ des Ovserver-Patterns in Java:
       Nutzer nicht vorhanden
     </p>
   \end{lstlisting}
-\end{frame}
+\end{Frame}
 
 \begin{frame}[fragile]{FormBuilder}
   \begin{lstlisting}[language=JavaScript,gobble=4]
@@ -196,24 +201,24 @@ des Ovserver-Patterns in Java:
   \end{lstlisting}
 \end{frame}
 
-\begin{frame}{Internationalization (I18N)}
+\begin{Frame}{Internationalization (I18N)}
   \begin{itemize}
     \item \lstinline[language=JavaScript]-view.formText('designator')-\\
-      \hfill\textcolor{gray}{ruft auf}\hfill\strut
+      \only<presentation>{\hfill}\textcolor<presentation>{gray}{ruft auf}\only<presentation>{\hfill}\strut
     \item \lstinline[language=JavaScript]-view.translate('models.' + this.model.name-\\
-      \qquad  \lstinline[language=JavaScript]-+ '.designator')-\\
-      \hfill\textcolor{gray}{ruft auf}\hfill\strut
+      \only<presentation>{\qquad} \lstinline[language=JavaScript]-+ '.designator')-\\
+      \only<presentation>{\hfill}\textcolor<presentation>{gray}{ruft auf}\only<presentation>{\hfill}\strut
     \item \lstinline[language=JavaScript]-i18n.getValue('models.room_type'-\\
-      \qquad \lstinline[language=JavaScript]- + '.designator')-\\
-      \hfill\textcolor{gray}{ruft auf}\hfill\strut
+      \only<presentation>{\qquad} \lstinline[language=JavaScript]- + '.designator')-\\
+      \only<presentation>{\hfill}\textcolor<presentation>{gray}{ruft auf}\only<presentation>{\hfill}\strut
     \item \lstinline[language=JavaScript]-i18n.find('de.models.room_type'- \\
-      \qquad \lstinline[language=JavaScript]-+ '.designator')-\\
-      \hfill\textcolor{gray}{basiert auf}\hfill\strut
+      \only<presentation>{\qquad} \lstinline[language=JavaScript]-+ '.designator')-\\
+      \only<presentation>{\hfill}\textcolor<presentation>{gray}{basiert auf}\only<presentation>{\hfill}\strut
     \item \lstinline[language=JavaScript]-_.extend(YAML.eval(de), YAML.eval(en))-
   \end{itemize}
-\end{frame}
+\end{Frame}
 
-\begin{frame}[fragile]{FormBuilder}
+\begin{Frame}[fragile]{FormBuilder}
   \begin{lstlisting}[language=HTML,gobble=4]
     <h3>
       <%=t('.title') %>
@@ -225,12 +230,12 @@ des Ovserver-Patterns in Java:
       | <a href="#"><%=t('.print') %></a>
     </p>
   \end{lstlisting}
-\end{frame}
+\end{Frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Routing}
 
-\begin{frame}[fragile]{Backbone.Router}
+\begin{Frame}[fragile]{Backbone.Router}
   \begin{itemize}
     \item Reaktivierung der Browser-Historie
     \item neuer Eintrag mit \lstinline-navigate(fragment)-
@@ -241,9 +246,9 @@ des Ovserver-Patterns in Java:
         Backbone.history.start();
       \end{lstlisting}
   \end{itemize}
-\end{frame}
+\end{Frame}
 
-\begin{frame}{StateModel}
+\begin{Frame}{StateModel}
   \begin{alertblock}{zirkuläre Abhängigkeiten}
     \begin{description}
       \item[Router] \lstinline-view = new View();-
@@ -263,7 +268,7 @@ des Ovserver-Patterns in Java:
       \item[State] \lstinline-router.navigate(fragment);-
     \end{description}
   \end{exampleblock}
-\end{frame}
+\end{Frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection[AMD]{Asynchronous Module Definition (AMD)}
@@ -281,10 +286,10 @@ des Ovserver-Patterns in Java:
   }
 }
 
-\begin{frame}{Asynchronous Module Definition}
+\begin{Frame}{Asynchronous Module Definition}
   \begin{columns}
     \column{0.5\textwidth}
-    {\large\bfseries\color{maincolor}klassisch}
+    {\only<presentation>{\large}\bfseries\color<presentation>{maincolor}klassisch}
     \setbeamertemplate{itemize item}{\badmark}
     \begin{itemize}
       \item Definitionen über direkt ausgeführten Code
@@ -293,7 +298,7 @@ des Ovserver-Patterns in Java:
       \item Kompression schwierig
     \end{itemize}
     \column{0.5\textwidth}
-    {\large\bfseries\color{maincolor}mit Modulen}
+    {\only<presentation>{\large}\bfseries\color<presentation>{maincolor}mit Modulen}
     \setbeamertemplate{itemize item}{\goodmark}
     \begin{itemize}
       \item Definitionen über Funktion
@@ -302,21 +307,24 @@ des Ovserver-Patterns in Java:
       \item Tools zur Kompression
     \end{itemize}
   \end{columns}
-\end{frame}
+\end{Frame}
 
-\begin{frame}{Asynchronous Module Definition\\ mit Require.js}
+\begin{Frame}{Asynchronous Module Definition\\ mit Require.js}
   \begin{center}
     \input{images/amd-tree}
   \end{center}
-\end{frame}
+\end{Frame}
 
 \lstset{basicstyle=\ttfamily\scriptsize}
 
-\begin{frame}[fragile,t]
-  \tikzset{file index/.style={file selected}}
-  \scalebox{0.5}{\input{images/amd-tree}}
-  
-  \vskip3ex
+\begin{Frame}[fragile,t]
+  \begin{onlyenv}<presentation>
+    \tikzset{file index/.style={file selected}}
+    \scalebox{0.5}{\input{images/amd-tree}}
+    
+    \vskip3ex
+  \end{onlyenv}
+  \only<article>{public/index.html:}
   
   \begin{lstlisting}[language=HTML,gobble=4]
     <!DOCTYPE html>
@@ -332,13 +340,16 @@ des Ovserver-Patterns in Java:
       </body>
     </html>
   \end{lstlisting}
-\end{frame}
+\end{Frame}
 
-\begin{frame}[fragile,t]
-  \tikzset{file main/.style={file selected}}
-  \scalebox{0.5}{\input{images/amd-tree}}
-  
-  \vskip3ex
+\begin{Frame}[fragile,t]
+  \begin{onlyenv}<presentation>
+    \tikzset{file main/.style={file selected}}
+    \scalebox{0.5}{\input{images/amd-tree}}
+    
+    \vskip3ex
+  \end{onlyenv}
+  \only<article>{public/main.js:}
   
   \begin{lstlisting}[language=JavaScript,gobble=4]
     require.config({
@@ -356,13 +367,16 @@ des Ovserver-Patterns in Java:
       $(function () { app.initialize(); });
     });
   \end{lstlisting}
-\end{frame}
+\end{Frame}
 
-\begin{frame}[fragile,t]
-  \tikzset{file model/.style={file selected}}
-  \scalebox{0.5}{\input{images/amd-tree}}
-  
-  \vskip3ex
+\begin{Frame}[fragile,t]
+  \begin{onlyenv}<presentation>
+    \tikzset{file model/.style={file selected}}
+    \scalebox{0.5}{\input{images/amd-tree}}
+    
+    \vskip3ex
+  \end{onlyenv}
+  \only<article>{public/app/models/order.js:}
   
   \begin{lstlisting}[language=JavaScript,gobble=4]
     define(['backbone'], function (Backbone) {
@@ -372,13 +386,16 @@ des Ovserver-Patterns in Java:
       return OrderModel;
     });
   \end{lstlisting}
-\end{frame}
+\end{Frame}
 
-\begin{frame}[fragile,t]
-  \tikzset{file view/.style={file selected}}
-  \scalebox{0.5}{\input{images/amd-tree}}
+\begin{Frame}[fragile,t]
+  \begin{onlyenv}<presentation>
+    \tikzset{file view/.style={file selected}}
+    \scalebox{0.5}{\input{images/amd-tree}}
   
-  \vskip3ex
+    \vskip3ex
+  \end{onlyenv}
+  \only<article>{public/app/views/order/show.js:}
   
   \begin{lstlisting}[language=JavaScript,gobble=4]
     define(['jquery', 'backbone',
@@ -394,13 +411,16 @@ des Ovserver-Patterns in Java:
       return OrdersShowView;
     });
   \end{lstlisting}
-\end{frame}
+\end{Frame}
 
-\begin{frame}[fragile,t]
-  \tikzset{file template/.style={file selected}}
-  \scalebox{0.5}{\input{images/amd-tree}}
-  
-  \vskip3ex
+\begin{Frame}[fragile,t]
+  \begin{onlyenv}<presentation>
+    \tikzset{file template/.style={file selected}}
+    \scalebox{0.5}{\input{images/amd-tree}}
+    
+    \vskip3ex
+  \end{onlyenv}
+  \only<article>{public/app/views/order/show.html:}
   
   \begin{lstlisting}[language=HTML,gobble=4]
     <h3><%=t('.title') %></h3>
@@ -409,11 +429,11 @@ des Ovserver-Patterns in Java:
       <%=showText('occasion') %>
     </dl>
   \end{lstlisting}
-\end{frame}
+\end{Frame}
 
 \subsection{Dokumentation}
 
-\begin{frame}[fragile]{RDoc}{app/models/order.rb}
+\begin{Frame}[fragile]{RDoc}{app/models/order.rb}
   \begin{lstlisting}[language=Ruby,gobble=4]
     # -*- encoding : utf-8 -*-
     # == Schema Information
@@ -432,19 +452,29 @@ des Ovserver-Patterns in Java:
     end
   \end{lstlisting}
   
-  \vskip3ex
+  \only<presentation>{\vskip3ex}
   
   \begin{lstlisting}[language={},gobble=4]
     rake doc:app
   \end{lstlisting}
-\end{frame}
+\end{Frame}
+
+\mode
+<article>
+
+\begin{center}
+  \includegraphics[width=.4\paperwidth]{images/rdoc}
+\end{center}
+
+\mode
+<all>
 
 {
   \setbeamertemplate{background canvas}{\includegraphics[width=\paperwidth]{images/rdoc}}
   \frame[plain]{}
 }
 
-\begin{frame}[fragile]{JSDoc}{public/app/models/order.js}
+\begin{Frame}[fragile]{JSDoc}{public/app/models/order.js}
   \begin{lstlisting}[language=JavaScript,gobble=4]
     define(['backbone', 'app/models/base'],
         function (Backbone, ApplicationModel) {
@@ -465,9 +495,9 @@ des Ovserver-Patterns in Java:
       return OrderModel;
     });
   \end{lstlisting}
-\end{frame}
+\end{Frame}
 
-\begin{frame}[fragile]{JSDoc}{lib/tasks/jsdoc.rake}
+\begin{Frame}[fragile]{JSDoc}{lib/tasks/jsdoc.rake}
   \begin{lstlisting}[language=Ruby,gobble=4]
     namespace :doc do
       desc "Generate docs for the client."
@@ -483,7 +513,17 @@ des Ovserver-Patterns in Java:
   \begin{lstlisting}[language={},gobble=4]
     rake doc:client
   \end{lstlisting}
-\end{frame}
+\end{Frame}
+
+\mode
+<article>
+
+\begin{center}
+  \includegraphics[width=.4\paperwidth]{images/jsdoc}
+\end{center}
+
+\mode
+<all>
 
 {
   \setbeamertemplate{background canvas}{\includegraphics[width=\paperwidth]{images/jsdoc}}

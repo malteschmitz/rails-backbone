@@ -46,7 +46,7 @@
   \node[model] at (4,2) (G1) {$g_1$};
   \node[model] at (4,0) (G2) {$g_2$};
 
-  \only<1>{\draw[line]
+  \only<presentation|1>{\draw[line]
     (U2.east) edge (G1.west)
     (U1.east) edge (G1.west)
     (U1.east) edge (G2.west);
@@ -67,7 +67,7 @@
     (G2.west) edge (U1G2.east);
   }
   
-  \only<1>{
+  \only<presentation|1>{
     \node[assoc] at (2,-.7) {many-to-many};
   }
   \only<2>{

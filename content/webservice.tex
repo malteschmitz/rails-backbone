@@ -1,9 +1,3 @@
-%\begin{frame}{}
-%  \begin{itemize}
-%    \item item
-%  \end{itemize}
-%\end{frame}
-
 \colorlet{maincolor}{bordeaux} % Color section in bordeaux
 \lstset{
   language=Ruby,
@@ -13,7 +7,7 @@
 
 \section[Webservice]{Webservice mit Rails 3.2}
 
-\begin{frame}{Was ist Rails}
+\begin{Frame}{Was ist Rails}
   \begin{itemize}
     \item Ruby on Rails Web-Framework
     \item Annahmen über \enquote{The Rails Way}
@@ -24,7 +18,7 @@
       \item REST-Architekturstil
     \end{itemize}
   \end{itemize}
-\end{frame}
+\end{Frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Model-View-Controller}
@@ -35,50 +29,50 @@
   \end{center}
 \end{frame}
 
-\begin{frame}{Models}
+\begin{Frame}{Models}
   \begin{itemize}
     \item Repräsentieren Daten
     \item Interagieren mit der Datenbank
     \item Enthalten Applikationslogik
     \item Häufig: Model $\hat =$ Datenbank-Tabelle
   \end{itemize}
-\end{frame}
+\end{Frame}
 
-\begin{frame}{Views}
+\begin{Frame}{Views}
   \begin{itemize}
     \item Bieten Benutzungsschnittstelle der Applikation
     \item Präsentieren ausschließlich Daten
     \item Liefern Daten aus
     \item Häufig: HTML-Dokumente mit eingebettetem Ruby-Code
   \end{itemize}
-\end{frame}
+\end{Frame}
 
-\begin{frame}{Controllers}
+\begin{Frame}{Controllers}
   \begin{itemize}
     \item Integrieren Views und Models
     \item Verarbeiten Anfragen
     \item Rufen Daten beim Model ab
     \item Liefern Daten zum View
   \end{itemize}
-\end{frame}
+\end{Frame}
 
-\begin{frame}{Komponentenübersicht}
+\begin{Frame}{Komponentenübersicht}
   \begin{center}
     \input{images/server-arch}
   \end{center}
-\end{frame}
+\end{Frame}
 
-\begin{frame}{RESTful Rails}
+\begin{Frame}{RESTful Rails}
   \begin{itemize}
     \item Addressierung von Ressourcen durch URIs
     \item Austausch von Zustands-Repräsentationen
     \item Zwei URIs
     \begin{itemize}
-      \item Collection-URI \\ \lstinline|GET /users|
-      \item Item-URI \\ \lstinline|GET /users/42|
+      \item Collection-URI \newline \lstinline|GET /users|
+      \item Item-URI \newline \lstinline|GET /users/42|
     \end{itemize}
   \end{itemize}
-\end{frame}
+\end{Frame}
 
 \begin{frame}[fragile]{RESTful Rails}
   \newcommand{\coord}[1]{\tikz[remember picture]{\node[coordinate](#1){};}}
@@ -97,7 +91,7 @@
   \end{center}
 
   \begin{tikzpicture}[remember picture,overlay]
-    \only<2>{\draw[red,thick]
+    \only<presentation|2>{\draw[red,thick]
       ($(new left) + (-.5ex,.5ex) $) --
       ($(new right) + (.5ex,.5ex)$)
       ($(edit left) + (-.5ex,.5ex) $) --
@@ -127,7 +121,7 @@
   \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Responder}
+\begin{Frame}[fragile]{Responder}
   Neue Implementierung:
   \begin{lstlisting}
     class PlanetsController <
@@ -142,18 +136,18 @@
       # ...
     end
   \end{lstlisting}
-\end{frame}
+\end{Frame}
 
-\begin{frame}{Responder Ablauf}
+\begin{Frame}{Responder Ablauf}
   Anfrage mit XML-Medientyp:
   \begin{enumerate}
     \item Template in \lstinline|planets/index.xml|?
     \item \lstinline|to_xml| Aufrufen
     \item \lstinline|to_format| Aufrufen
   \end{enumerate}
-\end{frame}
+\end{Frame}
 
-\begin{frame}[fragile]{HTTP-Semantik}
+\begin{Frame}[fragile]{HTTP-Semantik}
   \begin{lstlisting}
     def create
       @planet = Planet.new(params[:planet])
@@ -168,12 +162,12 @@
     \item[Erfolg] Status 201 Created
     \item[Fehler] Status 422 Unprocessable Entity
   \end{description}
-\end{frame}
+\end{Frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Views}
 
-\begin{frame}[fragile]{ERB Views}
+\begin{Frame}[fragile]{ERB Views}
   \begin{itemize}
     \item Ruby Code eingebettet in HTML-Dokumente
     \item Unterstützt Partials
@@ -193,9 +187,9 @@
       und die Albedo <%=h planet.albedo =>.
     </p>
   \end{lstlisting}
-\end{frame}
+\end{Frame}
 
-\begin{frame}[fragile]{JSON- und XML-Repräsentationen}
+\begin{Frame}[fragile]{JSON- und XML-Repräsentationen}
   \lstset{identifierstyle=\color{black}}
 
   \begin{columns}[t]
@@ -220,9 +214,9 @@
       \end{lstlisting}
     \end{column}
   \end{columns}
-\end{frame}
+\end{Frame}
 
-\begin{frame}[fragile]{to\_xml Methode}
+\begin{Frame}[fragile]{to\_xml Methode}
   \begin{lstlisting}
     def show
       @planet = Planet.find(params[:id])
@@ -239,9 +233,9 @@
   \end{lstlisting}
 
   Darstellungslogik im Controller \badmark
-\end{frame}
+\end{Frame}
 
-\begin{frame}[fragile]{to\_xml Methode}
+\begin{Frame}[fragile]{to\_xml Methode}
   \begin{lstlisting}
     def show
       @planet = Planet.find(params[:id])
@@ -251,9 +245,9 @@
   \end{lstlisting}
 
   Kopplung zwischen Datenmodell und Repräsentation \badmark
-\end{frame}
+\end{Frame}
 
-\begin{frame}[fragile]{Representative View}
+\begin{Frame}[fragile]{Representative View}
   \begin{lstlisting}
     r.element :id
     r.element :name
@@ -262,12 +256,12 @@
   \end{lstlisting}
 
   Repräsentation frei konfigurierbar \goodmark
-\end{frame}
+\end{Frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Assoziationen}
 
-\begin{frame}[fragile]{Assoziationen: Nutzer / Gruppen}
+\begin{Frame}[fragile]{Assoziationen: Nutzer / Gruppen}
   \begin{lstlisting}
     class User < ActiveRecord::Base
       has_and_belongs_to_many :groups
@@ -281,15 +275,15 @@
       attr_accessible :name
     end
   \end{lstlisting}
-\end{frame}
+\end{Frame}
 
-\begin{frame}{many-to-many}
+\begin{Frame}{many-to-many}
   \begin{center}
     \input{images/many-to-many}
   \end{center}
-\end{frame}
+\end{Frame}
 
-\begin{frame}[fragile]{Gruppen-Nutzer-Controller Create}
+\begin{Frame}[fragile]{Gruppen-Nutzer-Controller Create}
   \begin{lstlisting}
     class GroupsUsersController < 
         ApplicationController
@@ -305,9 +299,9 @@
       # ...
     end
   \end{lstlisting}
-\end{frame}
+\end{Frame}
 
-\begin{frame}[fragile]{Gruppen-Nutzer-Controller Destroy}
+\begin{Frame}[fragile]{Gruppen-Nutzer-Controller Destroy}
   \begin{lstlisting}
     class GroupsUsersController < 
         ApplicationController
@@ -324,12 +318,12 @@
       end
     end
   \end{lstlisting}
-\end{frame}
+\end{Frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Validierung}
 
-\begin{frame}[fragile]{Validierung von Referentieller Integrität}
+\begin{Frame}[fragile]{Validierung von Referentieller Integrität}
   \begin{lstlisting}
     class Moon < ActiveRecord::Base
       belongs_to :planets
@@ -343,9 +337,9 @@
         :referential_integrity => true
     end
   \end{lstlisting}
-\end{frame}
+\end{Frame}
 
-\begin{frame}[fragile]{Validierung von Referentieller Integrität}
+\begin{Frame}[fragile]{Validierung von Referentieller Integrität}
   \begin{lstlisting}
     class ReferentialIntegrityValidator < 
         ActiveModel::EachValidator
@@ -363,5 +357,5 @@
       end
     end
   \end{lstlisting}
-\end{frame}
+\end{Frame}
 

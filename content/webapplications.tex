@@ -10,49 +10,58 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{moderne Webanwendungen}
 
-\begin{frame}{moderne Webanwendungen}{}
+\begin{Frame}{moderne Webanwendungen}{}
   \begin{columns}
     \column{2cm}
     \column{\textwidth}
-    {\color{maincolor}\bfseries Geschäftslogik im Server} \\
-      \qquad zentrale Berechnung und Datenhaltung \\[1ex]
-    {\color{maincolor}\bfseries zustandsloser Server} \\
-      \qquad Abfragen in sich komplett \\[1ex]
-    {\color{maincolor}\bfseries Daten auf der Leitung} \\
-      \qquad Daten frei von Darstellung \\[1ex]
-    {\color{maincolor}\bfseries Präsentation im Client} \\
-      \qquad spezielle Clients möglich
+    {\color<presentation>{maincolor}\bfseries Geschäftslogik im Server} \newline
+      \hspace*{1em} zentrale Berechnung und Datenhaltung
+    
+    \vskip1ex
+    
+    {\color<presentation>{maincolor}\bfseries zustandsloser Server} \newline
+      \hspace*{1em} Abfragen in sich komplett
+    
+    \vskip1ex
+    
+    {\color<presentation>{maincolor}\bfseries Daten auf der Leitung} \newline
+      \hspace*{1em} Daten frei von Darstellung
+    
+    \vskip1ex
+      
+    {\color<presentation>{maincolor}\bfseries Präsentation im Client} \newline
+      \hspace*{1em} spezielle Clients möglich
   \end{columns}
-\end{frame}
+\end{Frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{RESTful Webservice}
 
-\begin{frame}{Was sind Webservices}
+\begin{Frame}{Was sind Webservices}
   \begin{itemize}
     \item Stellen Funktionalitäten über ein Netzwerk bereit
     \item Eindeutig definierte Schnittstelle
     \item Kommunikation über definierte Protokolle
     \item Zwei bekannte Vertreter: SOAP und RESTful
   \end{itemize}
-\end{frame}
+\end{Frame}
 
-\begin{frame}{Representational State Transfer (REST)}
+\begin{Frame}{Representational State Transfer (REST)}
   \begin{tabularx}{\textwidth}{rX}
-    \textbf{\color{maincolor}Identität} & Ressource eindeutig identifiziert \\
-    \textbf{\color{maincolor}Manipulation} & Selbst beschreibende Ressourcen \\
-    \textbf{\color{maincolor}Nachrichten} & Alle Informationen 
+    \textbf{\color<presentation>{maincolor}Identität} & Ressource eindeutig identifiziert \\
+    \textbf{\color<presentation>{maincolor}Manipulation} & Selbst beschreibende Ressourcen \\
+    \textbf{\color<presentation>{maincolor}Nachrichten} & Alle Informationen 
       zur Verarbeitung \newline
       enthalten\\
-    \textbf{\color{maincolor}Hypermedia} & 
-      \textcolor{maincolor}{--} Wenige Einstiegspunkte \newline
-      \textcolor{maincolor}{--} Interaktion durch Hypermedia \\
-    \textbf{\color{maincolor}Zustandslos} & Status einer Interaktion mit dem
+    \textbf{\color<presentation>{maincolor}Hypermedia} & 
+      \textcolor<presentation>{maincolor}{--} Wenige Einstiegspunkte \newline
+      \textcolor<presentation>{maincolor}{--} Interaktion durch Hypermedia \\
+    \textbf{\color<presentation>{maincolor}Zustandslos} & Status einer Interaktion mit dem
       Client unbekannt \\
   \end{tabularx}
-\end{frame}
+\end{Frame}
 
-\begin{frame}{Was sind RESTful Webservices}
+\begin{Frame}{Was sind RESTful Webservices}
   \begin{itemize}
     \item Representational State Transfer (REST)
     \item Bekannter Vertreter WWW
@@ -66,7 +75,7 @@
       \item[DELETE] zum Löschen von Daten
     \end{description}
   \end{itemize}
-\end{frame}
+\end{Frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Single-Page-Application}
@@ -86,29 +95,35 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{AJAX-Architektur}{}
-  {\color{maincolor}\bfseries Initialisierung}
+\begin{Frame}{AJAX-Architektur}{}
+  {\color<presentation>{maincolor}\bfseries Initialisierung}
   \begin{enumerate}
     \item Client vom Server laden 
-      {\scriptsize\\\color{gray} über klassischen GET-Request im Browser\\[2ex]}
+      {\only<presentation>{\scriptsize\color{gray}}\newline
+      über klassischen GET-Request im Browser}
     \item Client starten 
-      {\scriptsize\\\color{gray} über eingebundenes JavaScript\\[2ex]}
+      {\only<presentation>{\scriptsize\color{gray}}\newline
+      über eingebundenes JavaScript}
   \end{enumerate}    
   
-  \vfill
+  \only<presentation>{\vfill}
   
-  {\color{maincolor}\bfseries Interaktionsschleife}
+  {\color<presentation>{maincolor}\bfseries Interaktionsschleife}
   \begin{enumerate}
     \item Daten als JSON laden 
-      {\scriptsize\\\color{gray} über GET-Request mit \texttt{XMLHttpRequest}-Objekt\\[2ex]}
+      {\only<presentation>{\scriptsize\color{gray}}\newline
+      über GET-Request mit \texttt{XMLHttpRequest}-Objekt}
     \item Daten darstellen 
-      {\scriptsize\\\color{gray} über Manipulation des Document Object Model (DOM)\\[2ex]}
+      {\only<presentation>{\scriptsize\color{gray}}\newline
+      über Manipulation des Document Object Model (DOM)}
     \item auf Anwender-Interaktion reagieren 
-      {\scriptsize\\\color{gray} über Ereignis-Registrierung im DOM\\[2ex]}
+      {\only<presentation>{\scriptsize\color{gray}}\newline
+      über Ereignis-Registrierung im DOM}
     \item Daten an Server senden
-      {\scriptsize\\\color{gray} über POST/PUT/DELETE-Request mit \texttt{XMLHttpRequest}\\[2ex]}
+      {\only<presentation>{\scriptsize\color{gray}}\newline
+      über POST/PUT/DELETE-Request mit \texttt{XMLHttpRequest}}
   \end{enumerate}
-\end{frame}
+\end{Frame}
 
 \mode
 <article>
