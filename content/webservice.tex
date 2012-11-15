@@ -145,11 +145,11 @@
 \end{frame}
 
 \begin{frame}{Responder Ablauf}
-  Request for an XML response:
+  Anfrage mit XML-Medientyp:
   \begin{enumerate}
-    \item search for a template in \lstinline|people/index.xml|
-    \item invoke \lstinline|to_xml|
-    \item call \lstinline|to_format|
+    \item Template in \lstinline|planets/index.xml|?
+    \item \lstinline|to_xml| Aufrufen
+    \item \lstinline|to_format| Aufrufen
   \end{enumerate}
 \end{frame}
 
@@ -267,15 +267,85 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Assoziationen}
 
+\begin{frame}[fragile]{Nutzer / Gruppen}
+  \begin{lstlisting}
+    class User < ActiveRecord::Base
+      has_and_belongs_to_many :groups
+      attr_accessible :login, :password_hash
+    end
+  \end{lstlisting}
+
+  \begin{lstlisting}
+    class Group < ActiveRecord::Base
+      has_and_belongs_to_many :users
+      attr_accessible :name
+    end
+  \end{lstlisting}
+\end{frame}
+
 \begin{frame}{many-to-many}
   \begin{center}
     \input{images/many-to-many}
   \end{center}
 \end{frame}
 
+\begin{frame}[fragile]{Gruppen-Nutzer-Controller Create}
+  \begin{lstlisting}
+    class GroupsUsersController < 
+        ApplicationController
+      # POST /groups/users
+      def create
+        @group = Group.find(params[:group_id])
+        @user = User.find(params[:user_id])
+
+        @group.users << @user
+        respond_with(:status => 201)
+      end
+
+      # ...
+    end
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Gruppen-Nutzer-Controller Destroy}
+  \begin{lstlisting}
+    class GroupsUsersController < 
+        ApplicationController
+      # ...
+
+      # DELETE /groups/users?group_id=23
+      #                     &user_id=42
+      def destroy
+        @group = Group.find(params[:group_id])
+        @user = User.find(params[:user_id])
+
+        @user.groups.delete @group
+        respond_with(:status => 201)
+      end
+    end
+  \end{lstlisting}
+\end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Validierung}
 
-\frame{no content}
+\begin{frame}[fragile]{Gruppen-Nutzer-Controller Destroy}
+  \begin{lstlisting}
+    class ReferentialIntegrityValidator < 
+        ActiveModel::EachValidator
+      def validate_each(record, attribute, value)
+        attribute_id = (attribute.to_s + "_id").
+          to_sym
 
+        if (record.send(attribute_id).blank?)
+          record.errors[attribute_id] << 
+            'blank'
+        elsif value.blank?
+          record.errors[attribute_id] << 
+            'no_record'
+        end
+      end
+    end
+  \end{lstlisting}
+\end{frame}
 
