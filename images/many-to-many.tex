@@ -1,0 +1,78 @@
+\begin{tikzpicture}[
+    scale=1.3,
+    node/.style={
+      draw=maincolor,
+      thick,
+      rectangle,
+      fill=maincolor!18},
+    model/.style={
+      node,
+      rounded corners,
+      minimum width=2.5em,
+      minimum height=2.2em
+    },
+    join model/.style={
+      node,
+    },
+    caption/.style={
+      font=\scriptsize\color{maincolor}\bfseries
+    },
+    assoc/.style={
+      font=\scriptsize\bfseries
+    },
+    shorten >=3pt,
+    shorten <=3pt,
+    xs/.style={every edge/.append style={
+      transform canvas={xshift=#1}
+    }},
+    ys/.style={every edge/.append style={
+      transform canvas={yshift=#1}
+    }},
+    line/.style={
+      very thick,
+      color=maincolor,
+      line cap=round
+    }
+  ]
+
+  \node[caption] at (0,2.7) {USERS};
+  \node[caption] at (4,2.7) {GROUPS};
+  \only<2>{
+    \node[caption] at (2,2.7) {GROUPSUSERS};
+  }
+
+  \node[model] at (0,2) (U1) {$u_1$};
+  \node[model] at (0,0) (U2) {$u_2$};
+  \node[model] at (4,2) (G1) {$g_1$};
+  \node[model] at (4,0) (G2) {$g_2$};
+
+  \only<1>{\draw[line]
+    (U2.east) edge (G1.west)
+    (U1.east) edge (G1.west)
+    (U1.east) edge (G2.west);
+  }
+    
+  \only<2>{
+    \node[join model] at (2,0) (U2G1) {$gu_{2,1}$};
+    \node[join model] at (2,1) (U1G2) {$gu_{1,2}$};
+    \node[join model] at (2,2) (U1G1) {$gu_{1,1}$};
+  }  
+    
+  \only<2>{\draw[line]
+    (U1.east) edge (U1G1.west)
+              edge (U1G2.west)
+    (U2.east) edge (U2G1.west)
+    (G1.west) edge (U1G1.east)
+              edge (U2G1.east)
+    (G2.west) edge (U1G2.east);
+  }
+  
+  \only<1>{
+    \node[assoc] at (2,-.7) {many-to-many};
+  }
+  \only<2>{
+    \node[assoc] at (1,-.7) {many-to-one};
+    \node[assoc] at (3,-.7) {one-to-many};
+  }
+\end{tikzpicture}
+
