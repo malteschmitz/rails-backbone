@@ -7,7 +7,7 @@ Moderne Webanwendungen mit Rails und Backbone.js
 ================================================
 
 Wir halten auf der MetaNook 2012 den Vortrag "Moderne Webanwendungen mit Rails und Backbone.js".
-Dieses Repository enthält den LaTeX-Quellcode des Vortrags und die gerenderten Folien im Downloadbereich.
+Dieses Repository enthält den LaTeX-Quellcode des Vortrags.
 Weitere Informationen zur MetaNook unte http://metameute.de/nook2012/.
 
 Zusammenfassung
@@ -71,3 +71,11 @@ Gliederung
       * innerHTML / $.html() ist der schnellste Weg
       * Browser sind gut im HTML parsen
     * Abhängigkeiten auflösen mit Require.js
+
+Download
+--------
+
+Hier finden sich Folien und das zugehörige Skript des Vortrages als PDF-Dateien.
+
+* [Präsentation](http://uni.mlte.de/downloads/rails-backbone.pdf)
+* [Script-Version der Präsentation](http://uni.mlte.de/downloads/rails-backbone-script.pdf)
