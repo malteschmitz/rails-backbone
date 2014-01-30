@@ -1,0 +1,9 @@
+Malte Schmitz entwickelt professionelle Webanwendungen und hat seit vielen Jahren Erfahrung in der Frontend-Entwicklung mit HTML und JavaScript. Er beschäftigt sich insbesondere mit Architektur und Design von Single Page Applications und studierte Informatik an der Universität zu Lübeck.
+
+Johannes Thorn beschäftigt sich mit dem Einsatz von RESTful Webservices in Theorie und Praxis. Er studierte in Lübeck Informatik mit dem Schwerpunkt Software Systems Engineering und hat in seiner Abschlussarbeit Realisierungen von Webservices untersucht.
+
+Single Page Applications mit RESTful Webservices als Backend
+
+Der Vortrag stellt ein von den Referenten entwickeltes Framework zur einfachen Realisierung von Single Page Applications (SPA) vor. SPAs kombinieren die Vorteile von Desktopanwendungen (Thick Clients) und klassischen Webanwendungen (Thin Clients). Sie trennen dabei die Geschäftslogik als RESTful Webservice von der GUI im Browser, sodass die Netzwerk-Kommunikation auf Daten beschränkt wird (Data on the Wire). Im Vortrag wird die verwendete JSON-Schnittstelle und die Realisierung von Relationen im Datenmodell eingeführt. Die verwendete MVC-Architektur basiert auf Backbone.js, die Module werden dabei mit Require.js organisiert. Das entwickelte Template-System unterstützt Internationalisierung.
+
+Der Vortrag setzt Erfahrungen mit JavaScript voraus und erläutert die Architektur eines Frameworks zur Realisierung von Single Page Applications unter Einsatz bekannter Frameworks wie Require.js, Backbone.js und jQuery.
