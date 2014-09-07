@@ -77,5 +77,5 @@ Download
 
 Hier finden sich Folien und das zugehörige Skript des Vortrages als PDF-Dateien.
 
-* [Präsentation](http://uni.mlte.de/downloads/rails-backbone.pdf)
-* [Script-Version der Präsentation](http://uni.mlte.de/downloads/rails-backbone-script.pdf)
+* [Präsentation](http://www.mlte.de/downloads/rails-backbone.pdf)
+* [Script-Version der Präsentation](http://www.mlte.de/downloads/rails-backbone-script.pdf)
